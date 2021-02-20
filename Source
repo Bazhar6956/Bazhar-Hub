@@ -1,0 +1,191 @@
+--- Made By Bazhar#6956
+
+local ScreenGui = Instance.new("ScreenGui")
+local UI = Instance.new("ScreenGui")
+local UI_2 = Instance.new("Frame")
+local BackGround = Instance.new("Frame")
+local Container = Instance.new("Frame")
+local Padding = Instance.new("UIPadding")
+local Hitbox = Instance.new("TextButton")
+local UnderLine = Instance.new("Frame")
+local Toggle = Instance.new("TextButton")
+local Window = Instance.new("TextLabel")
+
+
+
+ScreenGui.Parent = game.CoreGui
+
+UI.Name = "UI"
+UI.Parent = ScreenGui
+UI.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+UI_2.Name = "UI"
+UI_2.Parent = UI
+UI_2.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+UI_2.BorderSizePixel = 0
+UI_2.Position = UDim2.new(0, 15, 0, 15)
+UI_2.Size = UDim2.new(0, 190, 0, 30)
+
+BackGround.Name = "BackGround"
+BackGround.Parent = UI_2
+BackGround.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+BackGround.BorderColor3 = Color3.fromRGB(27, 42, 53)
+BackGround.BorderSizePixel = 0
+BackGround.Position = UDim2.new(0, 0, 1, 0)
+BackGround.Size = UDim2.new(0, 190, 0, 200)
+
+Container.Name = "Container"
+Container.Parent = UI_2
+Container.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+Container.BorderColor3 = Color3.fromRGB(27, 42, 53)
+Container.BorderSizePixel = 0
+Container.Position = UDim2.new(0, 0, 1, 0)
+Container.Size = UDim2.new(0, 190, 0, 200)
+
+Padding.Name = "Padding"
+Padding.Parent = Container
+Padding.PaddingLeft = UDim.new(0, 10)
+Padding.PaddingTop = UDim.new(0, 5)
+
+Hitbox.Name = "Hitbox"
+Hitbox.Parent = Container
+Hitbox.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+Hitbox.BorderColor3 = Color3.fromRGB(85, 255, 127)
+Hitbox.Position = UDim2.new(0.00673691183, 0, 0.13619189, 0)
+Hitbox.Size = UDim2.new(0, 169, 0, 18)
+Hitbox.Font = Enum.Font.SourceSans
+Hitbox.Text = "Hitbox"
+Hitbox.TextColor3 = Color3.fromRGB(85, 255, 127)
+Hitbox.TextSize = 14.000
+
+UnderLine.Name = "UnderLine"
+UnderLine.Parent = UI_2
+UnderLine.BackgroundColor3 = Color3.fromRGB(85, 255, 127)
+UnderLine.BorderSizePixel = 0
+UnderLine.Position = UDim2.new(0, 0, 1, -1)
+UnderLine.Size = UDim2.new(1, 0, 0, 1)
+
+Toggle.Name = "Toggle"
+Toggle.Parent = UI_2
+Toggle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Toggle.BackgroundTransparency = 1.000
+Toggle.Position = UDim2.new(1, -25, 0, 0)
+Toggle.Size = UDim2.new(0, 25, 1, 0)
+Toggle.Font = Enum.Font.SourceSans
+Toggle.Text = "-"
+Toggle.TextColor3 = Color3.fromRGB(85, 255, 127)
+Toggle.TextSize = 17.000
+
+Window.Name = "Window"
+Window.Parent = UI_2
+Window.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Window.BackgroundTransparency = 1.000
+Window.Size = UDim2.new(1, 0, 1, 0)
+Window.Font = Enum.Font.SourceSans
+Window.Text = "Bazhar Hub "
+Window.TextColor3 = Color3.fromRGB(85, 255, 127)
+Window.TextSize = 17.000
+
+-- Scripts:
+
+local function OSRZEKJ_fake_script() -- Hitbox.LocalScript 
+	local script = Instance.new('LocalScript', Hitbox)
+
+	script.Parent.MouseButton1Click:Connect(function()
+		_G.Size = 20 --Change to any size 100> Or else you will lag
+		while true do
+			for i,v in next, game:GetService('Players'):GetPlayers() do 
+				if v ~= plr then 
+					pcall(function()
+						v.Character.HDetector.Size = Vector3.new(_G.Size, _G.Size, _G.Size, _G.Size) --Any size it's bypassed now
+						v.Character.HDetector.Transparency=0.65
+						v.Character.HDetector.Color = Color3.fromHSV(0.3745, 0.666667, 1)
+						v.Character.HDetector.Massless = true--Really ez just makes it massless obv
+					end)
+				end
+			end
+			wait()
+		end
+	end)
+end
+coroutine.wrap(OSRZEKJ_fake_script)()
+local function BBKVZWM_fake_script() -- Toggle.LocalScript 
+	local script = Instance.new('LocalScript', Toggle)
+
+	local back = script.Parent.Parent.BackGround
+	local con = script.Parent.Parent.Container
+	
+	local window = {
+			count = 0;
+			toggles = {},
+			closed = false;
+		}
+		script.Parent.MouseButton1Click:connect(function()
+			window.closed = not window.closed
+			script.Parent.Text = (window.closed and "+" or "-")
+			if script.Parent.Text == "+" then
+				back:TweenSize(UDim2.new(0, 190,0, 0), "Out", "Sine", 0.5)
+				con:TweenSize(UDim2.new(0, 190,0, 0), "Out", "Sine", 0.5)
+				wait(0.1) do
+				con.Visible = false
+				end
+			else
+				back:TweenSize(UDim2.new(0, 190,0, 200), "Out", "Sine", 0.5)
+				con:TweenSize(UDim2.new(0, 190,0, 200), "Out", "Sine", 0.5)
+				wait(0.2) do
+				con.Visible = true
+				end
+				end
+			
+		end)
+	
+end
+coroutine.wrap(BBKVZWM_fake_script)()
+local function FURAX_fake_script() -- UI_2.LocalScript 
+	local script = Instance.new('LocalScript', UI_2)
+
+	local dragger = {}; 
+	local resizer = {};
+	
+	do
+		local mouse = game:GetService("Players").LocalPlayer:GetMouse();
+		local inputService = game:GetService('UserInputService');
+		local heartbeat = game:GetService("RunService").Heartbeat;
+		-- // credits to Ririchi / Inori for this cute drag function :)
+		function dragger.new(frame)
+		    local s, event = pcall(function()
+		    	return frame.MouseEnter
+		    end)
+	
+		    if s then
+		    	frame.Active = true;
+	
+		    	event:connect(function()
+		    		local input = frame.InputBegan:connect(function(key)
+		    			if key.UserInputType == Enum.UserInputType.MouseButton1 then
+		    				local objectPosition = Vector2.new(mouse.X - frame.AbsolutePosition.X, mouse.Y - frame.AbsolutePosition.Y);
+		    				while heartbeat:wait() and inputService:IsMouseButtonPressed(Enum.UserInputType.MouseButton1) do
+		    					frame:TweenPosition(UDim2.new(0, mouse.X - objectPosition.X + (frame.Size.X.Offset * frame.AnchorPoint.X), 0, mouse.Y - objectPosition.Y + (frame.Size.Y.Offset * frame.AnchorPoint.Y)), 'Out', 'Quad', 0.1, true);
+		    				end
+		    			end
+		    		end)
+	
+		    		local leave;
+		    		leave = frame.MouseLeave:connect(function()
+		    			input:disconnect();
+		    			leave:disconnect();
+		    		end)
+		    	end)
+		    end
+		end
+		
+		function resizer.new(p, s)
+			p:GetPropertyChangedSignal('AbsoluteSize'):connect(function()
+				s.Size = UDim2.new(s.Size.X.Scale, s.Size.X.Offset, s.Size.Y.Scale, p.AbsoluteSize.Y);
+			end)
+		end
+	end
+	script.Parent.Active = true
+	script.Parent.Draggable = true
+end
+coroutine.wrap(FURAX_fake_script)()
